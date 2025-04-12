@@ -1,0 +1,11 @@
+[package]
+name = "termdiff"
+version = "0.1.0"
+edition = "2021"
+authors = ["Rust Developer"]
+description = "A terminal-based tool for comparing 2 or 3 files side-by-side"
+
+[dependencies]
+ratatui = "0.23.0"
+crossterm = "0.27.0"
+clap = "3.2.25"

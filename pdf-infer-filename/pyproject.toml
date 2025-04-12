@@ -1,0 +1,11 @@
+[project]
+name = "pdf-infer-filename"
+version = "0.1.0"
+description = "Infer filename from PDF contents using a LM"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pypdf2>=3.0.1",
+    "torch>=2.6.0",
+    "transformers>=4.50.0",
+]

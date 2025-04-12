@@ -1,0 +1,14 @@
+[project]
+name = "calendar-free-time"
+version = "0.1.0"
+description = "Print out upcoming free time from Google Calendar in form that can be shared in an email"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "google-api-python-client>=2.166.0",
+    "google-auth>=2.38.0",
+    "google-auth-oauthlib>=1.2.1",
+    "python-dateutil>=2.9.0.post0",
+    "pytz>=2025.2",
+    "requests>=2.32.3",
+]

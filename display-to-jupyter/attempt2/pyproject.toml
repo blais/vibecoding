@@ -1,0 +1,11 @@
+[project]
+name = "attempt2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiohttp>=3.11.14",
+    "jupyter-client>=8.6.3",
+    "websockets>=15.0.1",
+]

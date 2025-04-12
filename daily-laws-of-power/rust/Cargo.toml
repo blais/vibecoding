@@ -1,0 +1,22 @@
+[package]
+name = "dailylaws"
+description = "Daily emailer of a random law from 48 Laws of Power."
+version = "0.1.0"
+license = "GPL-2.0-or-later"
+keywords = ["robert greene", "48 laws of power"]
+categories = ["books"]
+
+edition = "2024"
+
+[dependencies]
+chrono = "0.4.40"
+tokio = { version = "1.44.0", features = ["full"] }
+google-cloud-storage = "0.24.0"
+lettre = "0.11.14"
+regex = "1.11.1"
+serde = "1.0.218"
+serde_yaml = "0.9.34"
+log = "0.4.26"
+env_logger = "0.11.6"
+clap = { version = "4.5.31", features = ["derive"] }
+google-cloud-auth = "0.18.0"

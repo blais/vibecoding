@@ -1,0 +1,17 @@
+[project]
+name = "pdf-similarity-filer"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "jupyterlab>=4.4.0",
+    "matplotlib>=3.10.1",
+    "numpy>=2.2.4",
+    "pandas>=2.2.3",
+    "pdfminer>=20191125",
+    "polars>=1.26.0",
+    "scikit-learn>=1.6.1",
+    "torch>=2.6.0",
+    "transformers>=4.50.3",
+]

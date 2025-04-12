@@ -1,0 +1,8 @@
+.aider*
+target
+convert-orats-1min/data/strikes_202009021228.csv
+convert-orats-2min/data/*.ORATS.txt
+convert-orats-2min/data/sample.txt
+*.parquet
+.ipynb_checkpoints
+pdf-ocr-extract/output.txt
