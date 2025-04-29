@@ -206,31 +206,28 @@ def main() -> None:
     all_status_options = list(standard_deductions.keys()) + list(
         FILING_STATUS_ACRONYMS.keys()
     )
-    status_help = f"Your filing status. Options: {', '.join(standard_deductions.keys())}. Acronyms: {', '.join(FILING_STATUS_ACRONYMS.keys())}."
+    status_help = f"Your filing status. Options: {', '.join(standard_deductions.keys())} or acronyms: {', '.join(FILING_STATUS_ACRONYMS.keys())}."
 
     parser.add_argument(
-        "-s",
-        "--filing-status",
-        required=True,
+        "status",  # Positional argument name
         choices=all_status_options,
         help=status_help,
-        metavar="STATUS", # Use a generic metavar
+        metavar="FILING_STATUS", # Clearer metavar
     )
     parser.add_argument(
-        "-i",
-        "--gross-income",
-        required=True,
+        "income",  # Positional argument name
         type=float,
         help="Your total gross income.",
+        metavar="GROSS_INCOME",
     )
 
     args = parser.parse_args()
 
     # Resolve acronym if provided
     chosen_filing_status = FILING_STATUS_ACRONYMS.get(
-        args.filing_status, args.filing_status
+        args.status, args.status  # Use args.status
     )
-    chosen_gross_income = args.gross_income
+    chosen_gross_income = args.income # Use args.income
 
     if chosen_gross_income < 0:
         print("Error: Gross income cannot be negative.")
