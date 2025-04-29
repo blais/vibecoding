@@ -8,15 +8,18 @@ that amount, including the dollar amount and the percentage.
 import argparse
 import io
 import sys
+from typing import Any, Dict, Tuple
 
 import pandas as pd
 import numpy as np
 
 
-def load_and_clean_data(csv_path="tax-rates.csv"):
+def load_and_clean_data(
+    csv_path: str = "tax-rates.csv",
+) -> Tuple[pd.DataFrame, Dict[str, float], Dict[str, Tuple[str, str]]]:
     """Loads tax rate data from CSV, cleans it, and returns brackets and deductions."""
     try:
-        df_tax_rates = pd.read_csv(csv_path)
+        df_tax_rates: pd.DataFrame = pd.read_csv(csv_path)
     except FileNotFoundError:
         print(f"Error: The file {csv_path} was not found.")
         sys.exit(1)
@@ -25,7 +28,7 @@ def load_and_clean_data(csv_path="tax-rates.csv"):
         sys.exit(1)
 
     # Function to clean currency values: remove '$', ',', handle NaN/None/empty strings
-    def clean_currency(value):
+    def clean_currency(value: Any) -> float:
         if pd.isna(value) or value == "":
             return np.nan  # Represent missing numeric values as NaN
         try:
@@ -35,7 +38,7 @@ def load_and_clean_data(csv_path="tax-rates.csv"):
             return np.nan  # Handle any conversion errors
 
     # Function to clean percentage values
-    def clean_percentage(value):
+    def clean_percentage(value: Any) -> float:
         if pd.isna(value) or value == "":
             return np.nan
         try:
@@ -98,7 +101,13 @@ def load_and_clean_data(csv_path="tax-rates.csv"):
 # --- Tax Calculation Function ---
 
 
-def calculate_tax(gross_income, filing_status, brackets_df, deductions, status_columns):
+def calculate_tax(
+    gross_income: float,
+    filing_status: str,
+    brackets_df: pd.DataFrame,
+    deductions: Dict[str, float],
+    status_columns: Dict[str, Tuple[str, str]],
+) -> Tuple[float, float, float, float]:
     """Calculates the total tax and effective tax rate."""
 
     if filing_status not in deductions:
@@ -173,9 +182,12 @@ def calculate_tax(gross_income, filing_status, brackets_df, deductions, status_c
 # --- Main Program Execution ---
 
 
-def main():
+def main() -> None:
     """Parses command-line arguments and calculates taxes."""
     # Load and clean data first
+    df_final_brackets: pd.DataFrame
+    standard_deductions: Dict[str, float]
+    status_columns: Dict[str, Tuple[str, str]]
     df_final_brackets, standard_deductions, status_columns = load_and_clean_data()
 
     parser = argparse.ArgumentParser(
