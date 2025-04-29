@@ -1,0 +1,9 @@
+Filing status,Tax Rate,Single Min,Single Max,Married filing jointly Min,Married filing jointly Max,Married filing separately Min,Married filing separately Max,Head of household Min,Head of household Max
+Standard deduction amount,,"$15,000", ,"$30,000", ,"$15,000", ,"$22,500",
+Taxable income,10%,$0,"$11,925",$0,"$23,850",$0,"$11,925",$0,"$17,000"
+Taxable income,12%,"$11,926","$48,475","$23,851","$96,950","$11,926","$48,475","$17,001","$64,850"
+Taxable income,22%,"$48,476","$103,350","$96,951","$206,700","$48,476","$103,350","$64,851","$103,350"
+Taxable income,24%,"$103,351","$197,300","$206,701","$394,600","$103,351","$197,300","$103,351","$197,300"
+Taxable income,32%,"$197,301","$250,525","$394,601","$501,050","$197,301","$250,525","$197,301","$250,500"
+Taxable income,35%,"$250,526","$626,350","$501,051","$751,600","$250,526","$375,800","$250,501","$626,350"
+Taxable income,37%,"$626,351",,"$751,601",,"$375,800",,"$626,351",
