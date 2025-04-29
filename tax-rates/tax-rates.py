@@ -179,6 +179,15 @@ def calculate_tax(
     return total_tax, effective_rate, taxable_income, deduction
 
 
+# --- Constants ---
+FILING_STATUS_ACRONYMS = {
+    "S": "Single",
+    "MFJ": "Married filing jointly",
+    "MFS": "Married filing separately",
+    "HOH": "Head of household",
+}
+
+
 # --- Main Program Execution ---
 
 
@@ -193,12 +202,19 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Calculate US federal income tax based on filing status and gross income."
     )
+    # Combine full names and acronyms for choices and help message
+    all_status_options = list(standard_deductions.keys()) + list(
+        FILING_STATUS_ACRONYMS.keys()
+    )
+    status_help = f"Your filing status. Options: {', '.join(standard_deductions.keys())}. Acronyms: {', '.join(FILING_STATUS_ACRONYMS.keys())}."
+
     parser.add_argument(
         "-s",
         "--filing-status",
         required=True,
-        choices=list(standard_deductions.keys()),
-        help="Your filing status.",
+        choices=all_status_options,
+        help=status_help,
+        metavar="STATUS", # Use a generic metavar
     )
     parser.add_argument(
         "-i",
@@ -210,7 +226,10 @@ def main() -> None:
 
     args = parser.parse_args()
 
-    chosen_filing_status = args.filing_status
+    # Resolve acronym if provided
+    chosen_filing_status = FILING_STATUS_ACRONYMS.get(
+        args.filing_status, args.filing_status
+    )
     chosen_gross_income = args.gross_income
 
     if chosen_gross_income < 0:
