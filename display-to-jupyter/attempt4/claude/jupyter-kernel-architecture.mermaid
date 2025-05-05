@@ -1,0 +1,36 @@
+graph TD
+    A[NiceGUI Application] --> B[JupyterKernelClient]
+    B --> C[BlockingKernelClient]
+    C --> D[Jupyter Kernel]
+    
+    subgraph User Interface
+    A
+    E[Connection Input]
+    F[Code Editor]
+    G[Output Display]
+    end
+    
+    subgraph Backend
+    B
+    C
+    H[Message Queue]
+    I[Async Thread]
+    end
+    
+    subgraph Jupyter
+    D
+    J[ZMQ Channels]
+    K[IOPub Channel]
+    L[Shell Channel]
+    end
+    
+    E --> A
+    F --> A
+    A --> G
+    B --> H
+    B --> I
+    C --> J
+    J --> K
+    J --> L
+    K --> B
+    L --> B

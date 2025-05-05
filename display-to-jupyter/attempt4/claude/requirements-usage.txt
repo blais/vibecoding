@@ -1,0 +1,77 @@
+# Requirements
+nicegui>=1.3.0
+jupyter-client>=8.0.0
+ipykernel>=6.0.0
+
+# Usage Instructions
+
+## 1. Installation
+
+Install the required packages:
+```bash
+pip install -r requirements.txt
+```
+
+## 2. Start a Jupyter Kernel
+
+Before using the GUI, you need to start a Jupyter kernel:
+
+```bash
+jupyter kernel --kernel=python3
+```
+
+This will output a connection file path like:
+`/path/to/jupyter/runtime/kernel-12345.json`
+
+Copy this path - you'll need it for the GUI.
+
+## 3. Run the GUI
+
+Start the NiceGUI application:
+
+```bash
+python jupyter_kernel_gui.py
+```
+
+## 4. Using the Interface
+
+1. Enter the kernel connection file path in the "Connection File" input field
+2. Click "Connect" to establish connection with the kernel
+3. Enter Python code in the code editor
+4. Click "Execute" to run the code
+5. View the results in the output section
+6. Click "Clear Output" to clear previous results
+7. Click "Disconnect" when finished
+
+## Example Code to Test
+
+Try these examples in the code editor:
+
+```python
+# Basic computation
+print("Hello from Jupyter!")
+2 + 2
+```
+
+```python
+# Plot example (requires matplotlib)
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+plt.plot(x, y)
+plt.title('Sine Wave')
+plt.show()
+```
+
+```python
+# Rich output example
+import pandas as pd
+
+df = pd.DataFrame({
+    'A': [1, 2, 3, 4],
+    'B': ['a', 'b', 'c', 'd']
+})
+df
+```
