@@ -1,4 +1,4 @@
-use clap::{App as ClapApp, Arg};
+use clap::{Command, Arg};
 use crossterm::{
     event::{self, Event, KeyCode, KeyModifiers},
     execute,
@@ -411,7 +411,7 @@ fn run_app<B: ratatui::backend::Backend>(
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let matches = ClapApp::new("File Diff Viewer")
+    let matches = Command::new("File Diff Viewer")
         .version("1.0")
         .author("Rust Developer")
         .about("Compare 2 or 3 files side by side")
