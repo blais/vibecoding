@@ -1,4 +1,4 @@
-use clap::{Command, Arg};
+use clap::{Command as ClapCommand, Arg};
 use crossterm::{
     event::{self, Event, KeyCode, KeyModifiers},
     execute,
@@ -291,7 +291,7 @@ fn run_app<B: ratatui::backend::Backend>(
 ) -> Result<(), Box<dyn Error>> {
     loop {
         terminal.draw(|f| {
-            let size = f.size();
+            let size = f.area();
 
             // Create horizontal layout for file panels
             let constraints: Vec<Constraint> =
@@ -411,7 +411,7 @@ fn run_app<B: ratatui::backend::Backend>(
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let matches = Command::new("File Diff Viewer")
+    let matches = ClapCommand::new("File Diff Viewer")
         .version("1.0")
         .author("Rust Developer")
         .about("Compare 2 or 3 files side by side")
