@@ -416,16 +416,15 @@ fn main() -> Result<(), Box<dyn Error>> {
         .author("Rust Developer")
         .about("Compare 2 or 3 files side by side")
         .arg(
-            Arg::with_name("files")
+            Arg::new("files")
                 .help("Files to compare")
                 .required(true)
-                .min_values(2)
-                .max_values(3),
+                .num_args(2..=3)
         )
         .get_matches();
 
     let file_paths: Vec<String> = matches
-        .values_of("files")
+        .get_many::<String>("files")
         .unwrap()
         .map(|s| s.to_string())
         .collect();
