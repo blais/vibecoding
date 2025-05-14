@@ -6,6 +6,6 @@ authors = ["Rust Developer"]
 description = "A terminal-based tool for comparing 2 or 3 files side-by-side"
 
 [dependencies]
-ratatui = "0.23.0"
-crossterm = "0.27.0"
-clap = "3.2.25"
+ratatui = "0.29.0"
+crossterm = "0.29.0"
+clap = "4.5.38"
